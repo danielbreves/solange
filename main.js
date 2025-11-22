@@ -1,5 +1,32 @@
 // Intercept form submission and post to webhook
 document.addEventListener('DOMContentLoaded', function() {
+  // Copy PIX key to clipboard
+  const pixButton = document.getElementById('chave-pix-btn');
+  
+  if (pixButton) {
+    pixButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const pixKey = document.getElementById('chave-pix');
+      if (pixKey) {
+        const text = pixKey.textContent;
+        
+        // Use Clipboard API
+        navigator.clipboard.writeText(text).then(function() {
+          console.log('PIX key copied to clipboard');
+          // Optionally change button text temporarily
+          const originalText = pixButton.textContent;
+          pixButton.textContent = 'Copiado!';
+          setTimeout(function() {
+            pixButton.textContent = originalText;
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy PIX key:', err);
+        });
+      }
+    });
+  }
+  
   const form = document.getElementById('wf-form-Mensagens-Form');
   
   if (form) {
