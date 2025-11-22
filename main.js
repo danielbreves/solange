@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault(); // Prevent default form submission
+      e.stopPropagation();
       
       // Get form data
       const formData = new FormData(form);
