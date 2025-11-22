@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault(); // Prevent default form submission
       e.stopPropagation();
       
+      // Get submit button and change text
+      const submitButton = form.querySelector('input[type="submit"]');
+      submitButton.value = 'Enviando...';
+      submitButton.disabled = true;
+      
       // Get form data
       const formData = new FormData(form);
       const data = {
