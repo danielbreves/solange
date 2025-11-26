@@ -1,18 +1,16 @@
 // Intercept form submission and post to webhook
 document.addEventListener('DOMContentLoaded', function() {
   // Copy PIX key to clipboard
-  const pixButton = document.getElementById('chave-pix-btn');
+  const pixButton = document.querySelector('.chave-pix-btn');
   
   if (pixButton) {
     pixButton.addEventListener('click', function(e) {
       e.preventDefault();
       
-      const pixKey = document.getElementById('chave-pix');
+      const pixKey = pixButton.getAttribute('data-pix');
       if (pixKey) {
-        const text = pixKey.textContent;
-        
         // Use Clipboard API
-        navigator.clipboard.writeText(text).then(function() {
+        navigator.clipboard.writeText(pixKey).then(function() {
           console.log('PIX key copied to clipboard');
           // Optionally change button text temporarily
           const originalText = pixButton.textContent;
