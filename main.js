@@ -28,13 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('wf-form-Mensagens-Form');
   
   if (form) {
-    // Prevent Enter key from submitting the form
-    form.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-      }
-    });
-    
     form.addEventListener('submit', function(e) {
       e.preventDefault(); // Prevent default form submission
       e.stopPropagation();
